@@ -1,0 +1,47 @@
+﻿@model IEnumerable<FurkanCelik.Models.DersSecimi>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Ders Listesi</h1>
+
+<p>
+    <a asp-action="Create">Yeni ders ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DersAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OgrenciSecmisMi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OgretmenOnayi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DersAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OgrenciSecmisMi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OgretmenOnayi)
+            </td>
+            <td>
+                <a asp-action="EditOgrenci" asp-route-id="@item.Id">Öğrenci olarak güncelle</a> |
+                <a asp-action="EditOgretmen" asp-route-id="@item.Id">Öğretmen olarak güncelle</a> |
+                @*<a asp-action="Delete" asp-route-id="@item.Id">Sil</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
